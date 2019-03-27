@@ -38,6 +38,7 @@ gem 'jquery-rails'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
+gem 'toastr-rails'
 gem 'will_paginate'
 gem 'will_paginate-bootstrap'
 

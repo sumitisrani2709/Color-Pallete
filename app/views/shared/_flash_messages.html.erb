@@ -1,0 +1,11 @@
+<% if flash.present? %>
+  <script>
+    <% if flash[:success] %>
+      toastr.success("<%= flash[:success] %>")
+    <% end %>
+    <% if flash[:error] %>
+      toastr.error("<%= flash[:error] %>")
+    <% end %>
+  </script>
+  <% flash.clear %>
+<% end %>
