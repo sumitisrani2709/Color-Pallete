@@ -2,7 +2,7 @@
 
 # This is a colors controller
 class ColorsController < ApplicationController
-  before_action :find_color, only: %w[edit update]
+  before_action :find_color, only: %w[show edit update destroy]
   def index
     @colors = Color.paginate(page: params[:page], per_page: 10)
   end
@@ -22,6 +22,8 @@ class ColorsController < ApplicationController
     end
   end
 
+  def show; end
+
   def edit; end
 
   def update
@@ -32,6 +34,15 @@ class ColorsController < ApplicationController
       flash[:error] = @color.errors.full_messages.join('<br>')
       render :edit
     end
+  end
+
+  def destroy
+    if @color.destroy
+      flash[:success] = 'Color has been deleted sucessfully.'
+    else
+      flash[:error] = @color.errors.full_messages.join('<br>')
+    end
+    redirect_to colors_path
   end
 
   private
