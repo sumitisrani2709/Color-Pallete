@@ -37,6 +37,7 @@ gem 'jquery-rails'
 # gem 'capistrano-rails', group: :development
 
 # Reduces boot times through caching; required in config/boot.rb
+gem 'active_interaction', '~> 3.7'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'draper'
 gem 'friendly_id', '~> 5.2.4'
