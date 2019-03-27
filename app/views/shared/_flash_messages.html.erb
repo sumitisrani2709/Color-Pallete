@@ -6,6 +6,9 @@
     <% if flash[:error] %>
       toastr.error("<%= flash[:error] %>")
     <% end %>
+    <% if flash[:notice] %>
+      toastr.info("<%= flash[:notice] %>")
+    <% end %>
   </script>
   <% flash.clear %>
 <% end %>
