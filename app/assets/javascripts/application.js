@@ -15,6 +15,7 @@
 //= require rails-ujs
 //= require bootstrap
 //= require toastr
+//= require jquery.minicolors
 //= require activestorage
 //= require turbolinks
 //= require_tree .
