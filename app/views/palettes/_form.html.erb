@@ -4,13 +4,14 @@
     <%= f.text_field :name, class: 'form-control' %>
   </p>
   <p>
-    <b>Choose Color</b><br>
+    <b>Choose Color</b><%= link_to "Add a new color", new_color_path, class: 'pull-right', remote: true %><br>
     <%= select_tag "color_ids", options_from_collection_for_select(Color.all, :id, :name, f.object.colors.pluck(:id)), { class: 'form-control', id: 'list-colors', multiple: true } %> 
   </p>
   <p>
     <%= f.submit class: 'btn btn-success' %>
   </p>
 <% end %>
+<%= render partial: "/colors/new_modal" %>
 <script>
   $(document).ready(function() {
     $("#list-colors").select2({

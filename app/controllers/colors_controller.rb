@@ -12,13 +12,15 @@ class ColorsController < ApplicationController
   end
 
   def create
-    @color = Color.new(permit_params)
-    if @color.save
-      flash[:success] = 'Color has been created sucessfully.'
-      redirect_to colors_path
-    else
-      flash[:error] = @color.errors.full_messages.join('<br>').html_safe
-      render :new
+    respond_to do |format|
+      format.js {}
+      if create_color?
+        flash[:success] = 'Color has been created sucessfully.'
+        format.html { redirect_to colors_path }
+      else
+        flash[:error] = @color.errors.full_messages.join('<br>').html_safe
+        format.html { render :new }
+      end
     end
   end
 
@@ -56,5 +58,10 @@ class ColorsController < ApplicationController
   rescue ActiveRecord::RecordNotFound
     flash[:notice] = 'The requested resource does not exist.'
     redirect_to(colors_path)
+  end
+
+  def create_color?
+    @color = Color.new(permit_params)
+    @color.save
   end
 end

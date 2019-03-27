@@ -1,0 +1,9 @@
+<% if @color.errors.blank? %>
+  $('#new-color-modal').modal('hide');
+  toastr.success("<%= flash[:success] %>")
+  var data = { id: <%= @color.id %>, text: '<%= @color.name%>' };
+  var newOption = new Option(data.text, data.id, false, false);
+  $('#list-colors').append(newOption).trigger('change');
+<% else %>
+  toastr.error("<%= flash[:error] %>")  
+<% end %>

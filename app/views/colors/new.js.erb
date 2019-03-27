@@ -1,0 +1,3 @@
+$('.new-color-form').html("<%= j render(partial: '/colors/form', locals: { color: @color }) %>");
+$('#new_color').attr('data-remote', 'true');
+$('#new-color-modal').modal('show');
