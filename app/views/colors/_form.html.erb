@@ -1,0 +1,20 @@
+<%= form_for(color) do |f| %>
+  <p>
+    <b>Name</b><br>
+    <%= f.text_field :name, class: 'form-control' %>
+  </p>
+  <p>
+    <b>Code</b><br>
+    <%= f.text_field :code, class: 'form-control', as: :minicolors %>
+  </p>
+  <p>
+    <%= f.submit class: 'btn btn-success' %>
+  </p>
+<% end %>
+<script>
+  $(document).ready(function() {
+    $('#color_code').minicolors({
+      theme: 'bootstrap'
+    });
+  });
+</script>
