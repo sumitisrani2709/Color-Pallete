@@ -16,6 +16,6 @@
  *= require select2
  *= require select2-bootstrap
  *= require custom
- *= require_tree .
+ *= require font-awesome.min
  *= require_self
  */
