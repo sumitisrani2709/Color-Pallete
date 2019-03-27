@@ -34,6 +34,11 @@
       </div>
     </nav>
     <div class="container">
+      <% unless current_page?(root_path) %>
+        <%= link_to :back do %>
+          <i class="fa fa-long-arrow-left"></i> Back
+        <% end %>
+      <% end %>  
       <%= render partial: "shared/flash_messages" %>
       <%= yield %>
     </div>  
