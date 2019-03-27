@@ -21,6 +21,13 @@
           </button> 
           <%= link_to "Colors Palette", root_path, class: 'navbar-brand' %>
         </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-9">
+          <ul class="nav navbar-nav"> 
+            <li class="<%= 'active' if current_page?(colors_path) %>">
+              <%= link_to "Colors", colors_path %>
+            </li>
+          </ul>
+        </div>
       </div>
     </nav>
     <div class="container">
