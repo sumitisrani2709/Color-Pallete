@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_27_093038) do
+ActiveRecord::Schema.define(version: 2019_03_27_095518) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,22 @@ ActiveRecord::Schema.define(version: 2019_03_27_093038) do
     t.index ["code"], name: "index_colors_on_code", unique: true
     t.index ["name"], name: "index_colors_on_name", unique: true
     t.index ["slug"], name: "index_colors_on_slug", unique: true
+  end
+
+  create_table "palette_colors", force: :cascade do |t|
+    t.bigint "palette_id"
+    t.bigint "color_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["color_id"], name: "index_palette_colors_on_color_id"
+    t.index ["palette_id"], name: "index_palette_colors_on_palette_id"
+  end
+
+  create_table "palettes", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_palettes_on_name", unique: true
   end
 
 end
