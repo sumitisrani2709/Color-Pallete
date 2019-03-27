@@ -3,7 +3,7 @@
 # This is a palettes controller
 class PalettesController < ApplicationController
   before_action :require_color, only: %w[create update]
-  before_action :find_palette, only: %w[edit update]
+  before_action :find_palette, only: %w[show edit update destroy]
 
   def index
     @palettes = Palette.paginate(page: params[:page], per_page: 10)
@@ -25,6 +25,8 @@ class PalettesController < ApplicationController
     end
   end
 
+  def show; end
+
   def edit; end
 
   def update
@@ -37,6 +39,15 @@ class PalettesController < ApplicationController
       render :edit
       raise ActiveRecord::Rollback
     end
+  end
+
+  def destroy
+    if @palette.destroy
+      flash[:success] = 'palette has been deleted sucessfully.'
+    else
+      flash[:error] = @palette.errors.full_messages.join('<br>')
+    end
+    redirect_to palettes_path
   end
 
   private
