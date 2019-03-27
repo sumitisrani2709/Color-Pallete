@@ -1,0 +1,6 @@
+<form class="navbar-form navbar-left pad-left-0">
+  <div class="form-group">
+    <%= text_field_tag 'search', "#{params[:search] if params[:search].present?}", placeholder: "search", class: "form-control" %>
+  </div>
+  <%= submit_tag 'GO', class: "btn btn-primary" %>
+</form>

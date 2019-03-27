@@ -6,7 +6,10 @@ class PalettesController < ApplicationController
   before_action :find_palette, only: %w[show edit update destroy]
 
   def index
-    @palettes = Palette.paginate(page: params[:page], per_page: 10)
+    @palettes = Palette.all
+    @palettes = @palettes.search(params[:search]) if params[:search].present?
+    @palettes = @palettes.order('created_at DESC')
+                         .paginate(page: params[:page], per_page: 10)
   end
 
   def new
@@ -35,7 +38,7 @@ class PalettesController < ApplicationController
       update_palette_and_palette_colors!
       flash[:success] = 'Palette has been updated sucessfully.'
       redirect_to palettes_path
-    rescue Exception => e
+    rescue StandardError, ActiveRecord::Rollback => e
       flash[:error] = e.message
       render :edit
       raise ActiveRecord::Rollback

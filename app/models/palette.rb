@@ -10,4 +10,9 @@ class Palette < ApplicationRecord
 
   has_many :palette_colors, dependent: :destroy
   has_many :colors, through: :palette_colors
+
+  scope :search, lambda { |keyword|
+    where('lower(name) like ?',
+          "%#{keyword.downcase}%")
+  }
 end
