@@ -4,7 +4,7 @@
 class ColorsController < ApplicationController
   before_action :find_color, only: %w[show edit update destroy]
   def index
-    @colors = Color.paginate(page: params[:page], per_page: 10)
+    @colors = ListColors.run(page: params[:page], per_page: 10).result
   end
 
   def new
