@@ -41,7 +41,7 @@ class ColorsController < ApplicationController
   end
 
   def find_color
-    @color = Color.find(params[:id])
+    @color = Color.friendly.find(params[:id])
   rescue ActiveRecord::RecordNotFound
     flash[:notice] = 'The requested resource does not exist.'
     redirect_to(colors_path)
