@@ -4,6 +4,10 @@
 class PalettesController < ApplicationController
   before_action :require_color, only: %w[create]
 
+  def index
+    @palettes = Palette.paginate(page: params[:page], per_page: 10)
+  end
+
   def new
     @palette = Palette.new
   end
