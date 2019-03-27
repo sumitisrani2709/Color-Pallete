@@ -3,4 +3,5 @@
 Rails.application.routes.draw do
   root 'welcome#index'
   resources :colors
+  resources :palettes
 end

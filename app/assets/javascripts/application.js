@@ -16,6 +16,7 @@
 //= require bootstrap
 //= require toastr
 //= require jquery.minicolors
+//= require select2
 //= require activestorage
 //= require turbolinks
 //= require_tree .

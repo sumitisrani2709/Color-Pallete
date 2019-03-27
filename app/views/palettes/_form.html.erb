@@ -1,0 +1,21 @@
+<%= form_for(palette) do |f| %>
+  <p>
+    <b>Name</b><br>
+    <%= f.text_field :name, class: 'form-control' %>
+  </p>
+  <p>
+    <b>Choose Color</b><br>
+    <%= select_tag "color_ids", options_from_collection_for_select(Color.all, :id, :name, f.object.colors.pluck(:id)), { class: 'form-control', id: 'list-colors', multiple: true } %> 
+  </p>
+  <p>
+    <%= f.submit class: 'btn btn-success' %>
+  </p>
+<% end %>
+<script>
+  $(document).ready(function() {
+    $("#list-colors").select2({
+      placeholder: "Select colors",
+      theme: "bootstrap"
+    });
+  });
+</script>

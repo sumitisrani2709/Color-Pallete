@@ -40,6 +40,7 @@ gem 'jquery-rails'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'friendly_id', '~> 5.2.4'
 gem 'jquery-minicolors-rails'
+gem 'select2-rails'
 gem 'toastr-rails'
 gem 'will_paginate'
 gem 'will_paginate-bootstrap'

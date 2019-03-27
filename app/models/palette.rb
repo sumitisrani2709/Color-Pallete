@@ -2,6 +2,9 @@
 
 # This is palette model.
 class Palette < ApplicationRecord
+  extend FriendlyId
+  friendly_id :name, use: :slugged
+
   validates :name, presence: true
   validates :name, uniqueness: { case_sensitive: false }
 
