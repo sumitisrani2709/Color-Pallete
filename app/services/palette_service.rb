@@ -9,10 +9,11 @@ class PaletteService
 
   def create
     result = {}
+
     Palette.transaction do
       create_palette_and_palette_colors!
       message = 'Palette has been created sucessfully.'
-      result = { success: true, message: message , data: @palette }
+      result = { success: true, message: message, data: @palette }
     rescue StandardError, ActiveRecord::Rollback => e
       result = { success: false, message: e.message }
       raise ActiveRecord::Rollback
@@ -25,6 +26,7 @@ class PaletteService
   def create_palette_and_palette_colors!
     @palette = Palette.new(name: @name)
     @palette.save!
+
     colors = Color.where(id: @color_ids)
     data = colors.collect do |color|
       { color_id: color.id,
