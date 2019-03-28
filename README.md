@@ -1,24 +1,41 @@
-# README
+# Color Palette
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Generate perfect color combinations for your designs. The super fast color schemes generator! Create, save perfect palettes in seconds! 
 
-Things you may want to cover:
+## Visit the hosted version
+* Visit https://color-palete.herokuapp.com
 
-* Ruby version
+## Setup development environment
 
-* System dependencies
+### Prerequisites
 
-* Configuration
+1. Install ruby v2.6.2 
+2. Install Postgres
 
-* Database creation
+### Download app and dependencies
 
-* Database initialization
+```
+$ git clone https://github.com/sumitisrani88/color_palette.git
+$ cd color_palette
+$ gem install bundler
+$ bundle install
+```
 
-* How to run the test suite
+### Setup database.
 
-* Services (job queues, cache servers, search engines, etc.)
+Update config/database.yml
 
-* Deployment instructions
+```
+$ rake db:create db:migrate
+$ rake color:create_records
+```
 
-* ...
+### Now launch
+```
+$ rails s
+```
+
+### Run test suits
+```
+$ rspec
+```
