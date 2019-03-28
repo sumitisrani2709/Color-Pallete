@@ -1,11 +1,11 @@
 <%= form_for(color) do |f| %>
   <p>
     <b>Name</b><br>
-    <%= f.text_field :name, class: 'form-control' %>
+    <%= f.text_field :name, class: 'form-control', required: true %>
   </p>
   <p>
     <b>Code</b><br>
-    <%= f.text_field :code, class: 'form-control', as: :minicolors %>
+    <%= f.text_field :code, class: 'form-control', as: :minicolors, required: true %>
   </p>
   <p>
     <%= f.submit class: 'btn btn-success' %>

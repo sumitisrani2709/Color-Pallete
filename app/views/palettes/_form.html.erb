@@ -1,11 +1,11 @@
 <%= form_for(palette) do |f| %>
   <p>
     <b>Name</b><br>
-    <%= f.text_field :name, class: 'form-control' %>
+    <%= f.text_field :name, class: 'form-control', required: true %>
   </p>
   <p>
     <b>Choose Color</b><%= link_to "Add a new color", new_color_path, class: 'pull-right', remote: true %><br>
-    <%= select_tag "color_ids", options_from_collection_for_select(Color.all, :id, :name, f.object.colors.pluck(:id)), { class: 'form-control', id: 'list-colors', multiple: true } %> 
+    <%= select_tag "color_ids", options_from_collection_for_select(Color.all, :id, :name, f.object.colors.pluck(:id)), { class: 'form-control', id: 'list-colors', multiple: true, required: true  } %> 
   </p>
   <p>
     <%= f.submit class: 'btn btn-success' %>
