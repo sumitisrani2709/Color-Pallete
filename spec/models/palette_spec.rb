@@ -16,7 +16,21 @@ RSpec.describe Palette, type: :model do
     let!(:palette_color) { create(:palette_color) }
 
     it 'Delete palette should delete associate palette colors too' do
-      expect { palette_color.palette.destroy }.to change { PaletteColor.count }.by(-1)
+      palete_count = PaletteColor.count
+      expect { palette_color.palette.destroy }.to change { palete_count }.by(-1)
+    end
+  end
+
+  describe '#search' do
+    let!(:palette_1) { create(:palette) }
+    it 'should return search palette' do
+      palette = Palette.search(palette_1.name)
+      expect(palette.pluck(:id).include?(palette_1.id)).to be_truthy
+    end
+
+    it 'should not return search palette' do
+      palette = Palette.search('no-palette')
+      expect(palette.pluck(:id).include?(palette_1.id)).to be_falsy
     end
   end
 end
